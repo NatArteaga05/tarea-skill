@@ -36,76 +36,20 @@ Los casos generados se guardan en `test-cases/`, en la raíz del proyecto. Actua
 
 - Codex con soporte para Agent Skills.
 - Python 3 para ejecutar el validador.
-- No requiere dependencias externas ni conexión a Internet.
-
-La skill está en `.codex/skills/acceptance-to-test-cases/` dentro de este repositorio; no requiere instalación adicional.
+- El script de validación usa Python y no requiere instalar dependencias externas adicionales.
 
 ## Instalación
 
-### Opción A — Usarla en este repositorio
+Clona el repositorio y entra a la carpeta del proyecto:
 
-La skill ya está instalada en este proyecto, en `.codex/skills/acceptance-to-test-cases/`. No hace falta copiarla ni instalarla otra vez. Invócala desde Codex:
-
-```text
-$acceptance-to-test-cases
+```bash
+git clone https://github.com/NatArteaga05/tarea-skill.git
+cd tarea-skill
 ```
 
-### Opción B — Instalarla en otro proyecto
+Luego abre el proyecto en el entorno donde utilizarás Codex. La skill ya está incluida junto con los archivos y recursos que necesita; no hace falta copiar sus archivos por separado.
 
-Copia la carpeta completa `acceptance-to-test-cases` dentro de `.codex/skills/` del proyecto destino. En Windows PowerShell, sustituye la ruta de ejemplo por la ubicación donde tengas esa carpeta:
-
-```powershell
-$origen = "C:\ruta\que\contiene\acceptance-to-test-cases"
-New-Item -ItemType Directory -Force ".codex\skills" | Out-Null
-Copy-Item -Path $origen -Destination ".codex\skills" -Recurse
-```
-
-La estructura quedará así:
-
-```text
-mi-proyecto/
-└── .codex/
-    └── skills/
-        └── acceptance-to-test-cases/
-            ├── SKILL.md
-            ├── README.md
-            ├── assets/
-            ├── references/
-            ├── scripts/
-            └── tests/
-```
-
-Abre ese proyecto en Codex e invoca la skill:
-
-```text
-$acceptance-to-test-cases
-```
-
-### Opción C — Instalarla globalmente
-
-Para usarla en distintos proyectos sin copiarla en cada uno, la ubicación global documentada por Codex es `~/.agents/skills/`. En Windows PowerShell:
-
-```powershell
-$origen = "C:\ruta\que\contiene\acceptance-to-test-cases"
-New-Item -ItemType Directory -Force "$HOME\.agents\skills" | Out-Null
-Copy-Item -Path $origen -Destination "$HOME\.agents\skills" -Recurse
-```
-
-La carpeta quedará en:
-
-```text
-~/.agents/skills/acceptance-to-test-cases/
-```
-
-Después, abre otro proyecto en Codex e invoca:
-
-```text
-$acceptance-to-test-cases
-```
-
-Codex detecta cambios en las skills; si la recién instalada no aparece, vuelve a abrir Codex. Consulta la [documentación de skills de Codex](https://developers.openai.com/codex/build-skills/) para más detalles.
-
-> Copia completa la carpeta `acceptance-to-test-cases`; no copies solo `SKILL.md`, porque la skill también utiliza `assets/`, `references/` y `scripts/`.
+Para ejecutarla, continúa con la sección «Cómo usarla».
 
 ## Cómo usarla
 
@@ -156,7 +100,7 @@ Los casos concretos dependerán del análisis de la skill y no se presuponen aqu
 ```mermaid
 flowchart TD
     A[Requisito] --> B[Analizar contexto]
-    B --> C[Consultar guidelines y plantilla]
+    B --> C[Consultar pautas y plantilla]
     C --> D{¿El requisito está claro?}
     D -- No --> E[Pedir aclaración]
     E --> D
